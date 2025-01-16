@@ -2,8 +2,8 @@ import React , {useState} from 'react'
 import App from "./App"
 
 
-const token = "/*KEY GOES HERE*/";
-const userSearch = {}
+
+
 
 function UserSearchFunc(userSearch){
 

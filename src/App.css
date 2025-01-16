@@ -1,0 +1,35 @@
+
+
+
+main {
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    min-height: 50vh;
+    min-width: 30vh;
+    align-self: center;
+    justify-content: center;
+    background-color: darkslategray;
+}
+
+.form {
+    padding: 30px;
+    max-width: 30%;
+    max-height: 110px;
+    margin-top: 120px;
+    background-color: gray;
+    border-radius: 5px;
+    box-shadow: 10px 5px whitesmoke;
+    }
+
+.headerText {
+    z-index: 10;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    margin: 10px;
+  
+
+}
+

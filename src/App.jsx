@@ -1,27 +1,42 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import UserSearchFunc from './utilities';
+import './App.css'
 
 
 function App() {
 
-  const  [search, setSearch] = useState("Search for Artist!")
-  const  [data, setData] = useState("")
+  const  [search, setSearch] = useState("")
+  const [result, setResult] = useState("")
 
   const handleSearch = (e) => {
     setSearch(e.target.value)
   
   };
 
+  const handleButtonClick = (e) => {
+    e.preventDefault()
+    setSearch("")
+
+  }
+
+  useEffect(()=> {
+    const fetchData = async () => {
+      const result = await fetch(`https://api.spotify.com/v1/${search}`)
+      const jsonResult = await result.json();
+      setSearch(result)
+    }
+  },[search])
+ 
+
+
+
   return (
-    <main style={{display:"flex",
-      justifyContent: "center",
-}}>
-      <form style={{margin: "320px",
-                    padding: "50px",
-                    backgroundColor:"gray",
-                    }}>
+    <main>
+      <h1 className="headerText">Search for 
+        </h1>
+      <form className="form">
         <input type="text" id="Search" value={search} onChange={handleSearch} />
-        <button id="search" value={data} >Search</button>
+        <button id="search" onClick={handleButtonClick} >Search</button>
       </form>
     </main>
   )
