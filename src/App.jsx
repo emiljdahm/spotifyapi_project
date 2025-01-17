@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
 import './index.css'
-import Card from "./utilities"
+import Card from "./card"
 
  const pastel = ["#80ef80","#ff46a2","#ff991c","#40e0d0"] 
   const clientId = "457c90c1dcd144308ec4a560e31d731d"
@@ -146,39 +146,19 @@ const handleButton = (e) => {
 
   return (
     <div>
-      <div> 
-          <form className="loginForm" >
-            <label id="userName" htmlFor="useName" ></label>
-          <input type="username" id=""/>
-            <label id="password" htmlFor="password"></label>
-          <input type="password" id="password"/>
-            <button id="" >Login</button>
-        </form>
-      </div>
           <h1 className="headerText">Spoty Search
         </h1>
     <main>
-   
       <form className="form" onChange={handleFormChange}>
         <label id="search" htmlFor="Search"></label>
         <input type="text" id="Search" value={search} />
         <button id="search" onClick={handleButton} >Search</button>
       </form>
     </main>
-    <div>
-  
     </div>
-    {isVisible && (
-    <div className="cards">
-          <img className="cardimg" src={images[0]}></img>
-          <h3 className="artisth3">{artistName}</h3>
-          <p className="artistP">{tracks[0]}</p>
-        </div>
-)}
-    </div>
+
   )
 }
-
 
 
 
