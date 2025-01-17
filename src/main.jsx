@@ -7,10 +7,8 @@ import Card from './card.jsx'
 
 createRoot(document.getElementById('root')).render(
     <>
-    <UserProfile />
       <App />
-      
-      <Playlist/>
+
       </>
   
 )

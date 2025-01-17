@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-
+import {getAuth} from "./utilities"
 function UserProfile(){
 
     const [userEmail, setUserEmail] = useState('')
@@ -11,20 +11,17 @@ function UserProfile(){
         // const redirectUri = "http://localhost:5173/"
         // const scopes = ["playlist-modify-public"]
 
-useEffect(() => {
-    var authParams = {
-        method: 'POST',
-        headers: {
-            'Content-Type' : 'application/x-www-form-urlencoded'
-        },
-        body: 
-        'grant_type=client_credentials&client_id='+clientId+"&client_secret="+clientSecret
-    }
-    fetch(`https://accounts.spotify.com/api/token`, authParams)
-    .then(result => result.json())//always add ()
-    .then(data => setAccessToken(data.access_token))
-    .catch(error => console.log(error))
-},[])
+  useEffect(() => {
+    const fetchToken = async () => {
+      try{
+      const token = await getAuth()
+      setAccessToken(token)
+      } catch(error) {
+        console.log('Fetch Error:', error)
+      }
+    };
+    fetchToken()
+  },[])
 
 
 const handleloginChange = (e) => {
