@@ -5,31 +5,116 @@ main {
     display: flex;
     margin: auto;
     flex-wrap: wrap;
-    min-height: 50vh;
-    min-width: 30vh;
+    min-height: 30vh;
+    min-width: 20vh;
     align-self: center;
     justify-content: center;
-    background-color: darkslategray;
+    border-radius:5px;
+    box-shadow: 3px 3px 3px black;
+    background-image: url(https://images.pexels.com/photos/3721941/pexels-photo-3721941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
+.loginForm {
+    display: flex;
+    justify-items: center;
+    flex-direction: row;
+    align-items: center;
+    border-radius:5px;
+    color: white;
+    }
+
+    .login button {
+        border-radius:5px;
+        color: white;
+        background-color: black;
+        }
 
 .form {
-    padding: 30px;
-    max-width: 30%;
-    max-height: 110px;
-    margin-top: 120px;
+    display: flex;
+    justify-items: center;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 70px;
+    padding: 10px;
+    width: 440px;
+    max-width: 70%;
+    max-height: 60px;
     background-color: gray;
-    border-radius: 5px;
-    box-shadow: 10px 5px whitesmoke;
+    border-radius:5px;
+    box-shadow: 3px 3px 3px white;
+    color: white;
+    }
+
+    .form button {
+        margin: 8px;
+        padding: 4px;
+        background-color: black;
+        color: white;
+        box-shadow: 0;
+        border: 0;
+        border-radius: 5px;
+        width: 80%;
+        height: 30px;
+
+    }
+    .form input{
+        width: 80%;
+        height: 30px;
     }
 
 .headerText {
     z-index: 10;
-    color: white;
-    align-items: center;
-    justify-content: center;
+    color: black;
     padding: 30px;
-    margin: 10px;
-  
+    margin: 0;
+    min-width: 100%;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    font-size: 60px;
 
 }
+
+div.cards {
+    display:flex;
+    flex-direction: column;
+    align-self: center;
+    text-align: start;
+    justify-content: center;
+    padding: 90px;
+    margin: 12px;
+    border-radius:5px;
+    box-shadow: 3px 3px 3px black;
+    max-height: 120px;
+    max-width: 90px;
+    color: white;
+    background-color: black;
+}
+div.cards img {
+    display: flex;
+    align-self: center;
+    max-width: 150%;
+    height: 100%;
+    border-radius:5px;
+    box-shadow: 3px  gray;
+}
+div.cards h3 {
+   text-align: center;
+   font-weight: 400;
+   font-style: italic;
+   letter-spacing: 2.5px;
+}
+
+div.cards p {
+    text-align: center;
+    font-weight: 600;
+    font-style: bold;
+    letter-spacing: 1.5px;
+    margin-top: 2px;
+    margin-bottom: 0;
+    margin-right: 0;
+ }
+
 
