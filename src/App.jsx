@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
 import './index.css'
+import Card from "./utilities"
 
  const pastel = ["#80ef80","#ff46a2","#ff991c","#40e0d0"] 
   const clientId = "457c90c1dcd144308ec4a560e31d731d"
@@ -8,7 +9,7 @@ import './index.css'
 
 
 function App() {
-
+//search states
   const  [search, setSearch] = useState("")
   const [accessToken, setAccessToken] = useState("")
   const [tracks, setTracks] = useState([])
@@ -16,7 +17,10 @@ function App() {
   const [artistId, setArtistId] = useState("");
   const [images, setImages] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  //login states
+  const [isLoginVisible, setloginIsVisible] = useState(false);
   const [userProfile, setUserProfile] = useState("")
+  const [loginForm, setLoginForm] = useState("")
 
 
   useEffect(() => {
@@ -37,7 +41,32 @@ function App() {
 }, [])
 
 
+async function UserProfile(){
 
+
+  //if logged in dont show form login
+  if(search === ""){
+    setloginIsVisible(true);
+    return;
+  }
+  isLoginVisible(true);
+
+  const getParams = {
+    method: 'GET',
+    headers: {
+      'Content-Type' : 'application/json',
+      'Authorization' : 'Bearer ' + accessToken
+    },
+  }
+
+  const profileData = 
+  await fetch('https://api.spotify.com/v1/me', getParams)
+  .then((response) => response.json())
+  .then(data=> console.log(data))
+  
+
+
+}
 //search 2 get request, name or id of artist then grab their work 
 async function UserSearch(){
 
@@ -58,7 +87,7 @@ async function UserSearch(){
       'Authorization' : 'Bearer ' + accessToken
     },
   };
-//get artist data
+//get artist data name and ID
   const artistData = 
   await fetch('https://api.spotify.com/v1/search/?q='
   + search +"&type=artist", searchParam)
@@ -68,7 +97,7 @@ async function UserSearch(){
   const artistId = artistData.artists.items[0]?.id;
   const artistName = artistData.artists.items[0]?.name;
   setArtistName(artistName);
-
+  setArtistId(artistId)
 
 
   //get track info
@@ -81,6 +110,8 @@ async function UserSearch(){
 
       //confirm working
    console.log(topTracks[0])
+
+   //image info
 
    const imageData = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, searchParam)
    .then((response) => response.json())
@@ -97,6 +128,10 @@ async function UserSearch(){
 
 //handles change to search
 const handleFormChange = (e) => {
+  setSearch(e.target.value)
+}
+
+const handleloginChange = (e) => {
   setSearch(e.target.value)
 }
 
@@ -130,6 +165,9 @@ const handleButton = (e) => {
         <button id="search" onClick={handleButton} >Search</button>
       </form>
     </main>
+    <div>
+  
+    </div>
     {isVisible && (
     <div className="cards">
           <img className="cardimg" src={images[0]}></img>
