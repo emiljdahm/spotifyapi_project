@@ -1,6 +1,45 @@
 
  .searchContainer {
-  display: inline-block;
-  min-height: 200px;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: limegreen;
+  margin-top: 10px;
+  min-height: 180px;
+  max-width: 90;
+  padding: 12px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px ;
+ }
+
+ .searchContainer h1 {
+    color: white;
+    align-self: center;
+    justify-self: center;
+    min-width: 253px;
+ }
+ .searchContainer img {
+    max-width: 120px;
+    align-self: center;
+    margin-bottom: 4px;
+
+
+ }
+ .searchContainer form {
+    align-self: center;
+    justify-self: center;
+    
+ }
+ .searchContainer form input {
+    padding: 6px;
+    border-radius: 5px;
+    margin-right: 2px;
+    box-shadow: 2px 2px 2px gray;
+    background-color: white;
+ }
+ .searchContainer form button {
+    padding: 6px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px gray;
+    background-color: white;
+
  }

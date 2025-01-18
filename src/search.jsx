@@ -47,7 +47,7 @@ const[search, setSearch] = useState("")
         throw new Error ("Error Searching:")
       } const data = await response.json();
       // error occurs here cannot save data? maybe api limitation
-        console.log(data)
+        console.log(data.artists.items[0])
       
   
       } catch (error){ console.log('Search Error:', error)}
@@ -76,9 +76,10 @@ const[search, setSearch] = useState("")
     return(<>
 
     <div className="searchContainer">
-        <h1>Search for Music</h1>
+        <h1></h1>
+        <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Full_Logo_RGB_White-300x82.png"></img>
         <form onSubmit={handleButton} id="search">
-        <input type="text" placeholder="Search for music" onChange={handleSearch}></input>
+        <input type="text" placeholder="Enter a Artist" onChange={handleSearch}></input>
         <button onChange={handleButton}>Search</button>
         </form>
     </div>
