@@ -1,4 +1,6 @@
-import './App.css'
+import './card.css'
+import Search from './search';
+import React from 'react';
 
 function Card(props){
 
@@ -6,11 +8,13 @@ function Card(props){
 
 
 
+
+
     return (
         <div className="cards">
-        <img className="cardimg" ></img>
-              <h3 className="artist"></h3>
-              <p className="artistP"></p>
+        <img src={props.img}></img>
+              <h3>{props.name}</h3>
+              <p>Followers: {props.artistPop}</p>
             </div>
     )
 

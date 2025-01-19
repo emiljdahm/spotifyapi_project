@@ -30,6 +30,7 @@ function App(props) {
    <UserProfile />
    <Search/>
 
+
     </div>
   );
 
