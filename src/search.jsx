@@ -97,6 +97,7 @@ const[album, setAlbum] = useState([])
         throw new Error ("Error Searching:Top Tracks")
       } const data = await response.json();
       setTopTrack(data.tracks[0].name)
+      
       //data.tracks[0].name
     
       // error occurs here cannot save data? maybe api limitation save data to consts? 
@@ -115,28 +116,18 @@ const[album, setAlbum] = useState([])
         const response = await fetch(`https://api.spotify.com/v1/artists/${artistId}/albums?market=US`, GETsearchParams)
         try{
           if(!response.ok){
-            throw new Error ("Error Searching:Top Tracks")
+            throw new Error ("Error Searching:Top Albums")
           } const data = await response.json();
-          setAlbum(data.items.map((item) => ({name: item.name,
-            year: item.release_date,
-            img: item.images[0].url
-          })
+          setAlbum(data.items.map((item) => (
+            {
+              name: item.name,
+              year: item.release_date,
+               img: item.images[0].url,
+          }
+        )
           )
         )
-  
-          //
-         // setAlbumName((data.))
-          //setAlbumYear()
-          //setAlbumImg()
- 
-        
-          // error occurs here cannot save data? maybe api limitation save data to consts? 
-          // when I edit past this section while in dev mode on chrome intent disconnects. 
-          //reset cache and cookies, branch off to not affect working code.
-          //i believe its from the search artist function maybe too many requests? 
-    
-        
-          
+
           } catch (error){ console.log('Search Tracks Error:', error)}
           
       }
@@ -173,21 +164,18 @@ const[album, setAlbum] = useState([])
         </form>
     </div>
     <div>
-      { artistName !== '' ?
-      <ArtistCard name={artistName} img={artistImg} artistPop={artistPop}  artistGenre={artistGenre}/> 
-      : ''
-      }
-      {artistName !== '' ?
-      <TrackCard topTrack={topTrack}/> 
-      : ''
-      }  
-        {artistName !== '' ?
-      <AlbumCards albumName={album[0].name} albumYear={album[0].year} albumImg={album[0].img}/> 
-      : ''
-      }
-
-        
+      {artistName !== '' && ( 
+      <>
+      <ArtistCard name={artistName} img={artistImg} artistPop={artistPop}  artistGenre={artistGenre}/>
+      <TrackCard topTrack={topTrack}/>
+      {album.length > 0 && ( album.map((album, i) => 
+      <AlbumCards key={i} albumName={album.name} albumYear={album.year} albumImg={album.img}/> 
+      
+      ))}
+      </>
+      )}
     </div>
+    
     
     </>)
 
