@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   background-color: limegreen;
-  margin-top: 10px;
+  margin-top: 4px;
   min-height: 180px;
   max-width: 90;
   padding: 12px;
@@ -18,6 +18,7 @@
     min-width: 253px;
  }
  .searchContainer img {
+   margin-top: 33px;
     max-width: 120px;
     align-self: center;
     margin-bottom: 4px;

@@ -20,7 +20,7 @@ export async function getAuth(){
             throw new Error('Network response was not ok')
         }
         const data = await response.json();
-            console.log(data.access_token)
+            console.log('data.access_token created')
             return data.access_token
         }
     catch(error) {
