@@ -33,7 +33,7 @@ function Playlist(){
           },
         };
       //get playlist info -> look up profile
-        const playlistData = 
+        async function PlaylistData(){ 
         await fetch(`https://api.spotify.com/users/${user_id}/playlists`,loadParam)
         .then((response) => response.json())
         .then(data => console.log(data))
@@ -60,6 +60,7 @@ function Playlist(){
         
     </div>
     )
+}
 }
   //add search function or move function to headers
         //enter or button to submit playlist to profile?

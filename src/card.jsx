@@ -2,7 +2,7 @@ import './card.css'
 import Search from './search';
 import React from 'react';
 
-function Card(props){
+function ArtistCard(props){
 
 
 
@@ -12,9 +12,10 @@ function Card(props){
 
     return (
         <div className="cards">
-        <img src={props.img}></img>
+        <img className="cardImg" src={props.img}></img>
               <h3>{props.name}</h3>
-              <p>Followers: {props.artistPop}</p>
+              <p>Followers: {props.artistPop.toLocaleString()}</p>
+              <p>Genre: {props.artistGenre.toUpperCase()}</p>
             </div>
     )
 
@@ -25,4 +26,4 @@ function Card(props){
 
 }
 
-export default Card;
+export default ArtistCard;
