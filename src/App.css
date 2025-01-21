@@ -11,9 +11,6 @@ main {
     justify-content: center;
     border-radius:5px;
     box-shadow: 3px 3px 3px black;
-    background-image: url(https://images.pexels.com/photos/3721941/pexels-photo-3721941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
-    background-size: cover;
-    background-position: center;
     font-family: Arial, Helvetica, sans-serif;
 }
 .loginForm {

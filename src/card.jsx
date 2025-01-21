@@ -12,10 +12,12 @@ function ArtistCard(props){
 
     return (
         <div className="cards">
-        <img className="cardImg" src={props.img}></img>
+        <div>
               <h3>{props.name}</h3>
-              <p>Followers: {props.artistPop.toLocaleString()}</p>
-              <p>Genre: {props.artistGenre.toUpperCase()}</p>
+              <img className="maincardImg" src={props.img}></img>
+              <p>Followers: {props.artistPop}</p>
+              <p>Genre: {props.artistGenre}</p>
+              </div>
             </div>
     )
 

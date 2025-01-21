@@ -5,6 +5,8 @@ function UserProfile(){
 
     const [userEmail, setUserEmail] = useState('')
     const [access_token, setAccessToken] = useState('')  
+ 
+
 
         // const clientId = "CLIENT_ID" 
         // const clientSecret = "CLIENT
@@ -12,44 +14,39 @@ function UserProfile(){
         // const redirectUri = "http://localhost:5173/"
         // const scopes = ["playlist-modify-public"]
 
-  useEffect(() => {
-    const fetchToken = async () => {
-      try{
-      const token = await getAuth()
-      setAccessToken(token)
-      } catch(error) {
-        console.log('Fetch Error:', error)
-      }
-    };
-    fetchToken()
-  },[])
+async function getUserProfile() {
 
-  async function AuthApp() {
+  const redirect_uri = "http://localhost:5173/"
+  const clientId = "457c90c1dcd144308ec4a560e31d731d"
+  const client_secret = "87423b39aac249beba4de5e4b3f48670"
+  const authURL = "https://accounts.spotify.com/authorize"
+  const scope = ["playlist-modify-public","user-read-private", "user-read-email"]
+  const redirectUri = 'http://localhost:8080';
+  const authUrl = new URL("https://accounts.spotify.com/authorize")
+  
+  // generated in the previous step
+  window.localStorage.setItem('code_verifier', codeVerifier);
+  
+  const params =  {
+    response_type: 'code',
+    client_id: clientId,
+    scope,
+    code_challenge_method: 'S256',
+    code_challenge: codeChallenge,
+    redirect_uri: redirect_uri,
 
-    var authOptions = {
-      url: 'https://accounts.spotify.com/api/token',
-      form: {
-        code: ,
-        redirect_uri: ,
-        grant_type: 'authorization_code'
-      },
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic ' + (new Buffer.from(client_id + ':' + client_secret).toString('base64'))
-      }
-    
   }
+  
+  authUrl.search = new URLSearchParams(params).toString();
+  window.location.href = authUrl.toString();
 
-
-
-const handleloginChange = (e) => {
-    e.preventDefault()
-
-        
-    }
+}
 
     const handleButtonChange = (e) => {
        e.preventDefault()
+       setUserEmail(e.target.value)
+       getUserProfile()
+        console.log('button clicked ')
 
         
     }
@@ -68,6 +65,5 @@ const handleloginChange = (e) => {
       </form>
       <div className="profileContainer"></div>
     </div>
-    )
-}
+    )}
 export default UserProfile;

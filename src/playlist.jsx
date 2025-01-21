@@ -5,11 +5,8 @@ import {getAuth} from "./utilities"
 
 function Playlist(){
 
-     const [accessToken, setAccessToken] = useState("")
+    
 
-      useEffect(() => {
-       setAccessToken(getAuth())
-       },[])
 
 
     async function LoadPlaylist(){

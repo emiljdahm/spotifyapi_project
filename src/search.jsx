@@ -73,7 +73,7 @@ const[album, setAlbum] = useState([])
       setArtistName(data.artists.items[0].name)
       setArtistId(data.artists.items[0].id)
       setArtistImg(data.artists.items[0].images[0].url)
-      setArtistPop(data.artists.items[0].followers.total)
+      setArtistPop(data.artists.items[0].followers.total.toLocaleString())
       setArtistGenre(data.artists.items[0].genres[0])
       //console.log(data.artists.items[0]) Track Data
      SearchTopTracks(data.artists.items[0].id)
