@@ -12,6 +12,7 @@ div.cards {
     color: white;
     background-color: 	#212121;
 }
+
 div.cards img {
     display: flex;
     align-self: center;

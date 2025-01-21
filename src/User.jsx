@@ -6,7 +6,8 @@ function UserProfile(){
     const [userEmail, setUserEmail] = useState('')
     const [access_token, setAccessToken] = useState('')  
 
-     
+        // const clientId = "CLIENT_ID" 
+        // const clientSecret = "CLIENT
         // const authEndUrl ="https://accounts.spotify.com/authorize"
         // const redirectUri = "http://localhost:5173/"
         // const scopes = ["playlist-modify-public"]
@@ -22,6 +23,23 @@ function UserProfile(){
     };
     fetchToken()
   },[])
+
+  async function AuthApp() {
+
+    var authOptions = {
+      url: 'https://accounts.spotify.com/api/token',
+      form: {
+        code: ,
+        redirect_uri: ,
+        grant_type: 'authorization_code'
+      },
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic ' + (new Buffer.from(client_id + ':' + client_secret).toString('base64'))
+      }
+    
+  }
+
 
 
 const handleloginChange = (e) => {
