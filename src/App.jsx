@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
 import './index.css'
-import Card from "./card"
-import UserProfile from './User'
 import getAuth from "./utilities"
 import Search from "./search"
 
@@ -27,7 +25,6 @@ function App(props) {
 
   return (
     <div className="App">
-   <UserProfile />
    <Search/>
 
 

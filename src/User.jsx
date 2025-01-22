@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useState, useEffect} from "react";
 import {getAuth} from "./utilities"
 function UserProfile(){
@@ -53,3 +54,5 @@ const handleloginChange = (e) => {
     )
 }
 export default UserProfile;
+=======
+>>>>>>> 6b5de01 (addditional changes to styling)

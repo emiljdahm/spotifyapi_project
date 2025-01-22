@@ -39,6 +39,7 @@ div.cards p {
     margin-right: 0;
  }
 
+<<<<<<< HEAD
  div.card {
     border: 1px solid hsl(0, 0%, 80%);
     border-radius: 10px;
@@ -71,4 +72,31 @@ div.card p {
 
 
  }
+=======
+ a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-style: bold;
+    letter-spacing: 1.5px;
+    word-spacing: 2px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-right: 0;
+    
+ }
+
+ a:hover {
+    color: white;
+    text-decoration: underline;
+    font-weight: 600;
+ }
+
+ a:visited {
+    color: white;
+    text-decoration: none;
+
+ }
+
+>>>>>>> 6b5de01 (addditional changes to styling)
  

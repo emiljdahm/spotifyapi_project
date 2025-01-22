@@ -1,5 +1,4 @@
 import './card.css'
-import Search from './search';
 import React from 'react';
 
 function Card(props){
