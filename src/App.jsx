@@ -3,6 +3,7 @@ import './App.css'
 import './index.css'
 import getAuth from "./utilities"
 import Search from "./search"
+import GetUserProfile from "./User"
 
 
 function App(props) {
@@ -11,6 +12,7 @@ function App(props) {
   const [authCode, setAuthCode] = useState('')
 
 // componet mounts and refers to utilities function to get auth WORKS
+// componet mounts and refers to utilities function to get auth
   // useEffect(() => {
   //   const fetchToken = async () => {
   //     try{
