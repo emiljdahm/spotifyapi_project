@@ -3,6 +3,7 @@ import './App.css'
 import './index.css'
 import getAuth from "./utilities"
 import Search from "./search"
+import GetUserProfile from "./User"
 
 
 function App(props) {
@@ -10,21 +11,22 @@ function App(props) {
   const [accessToken, setAccessToken] = useState("")
 
 // componet mounts and refers to utilities function to get auth
-  useEffect(() => {
-    const fetchToken = async () => {
-      try{
-      const token = await getAuth()
-      setAccessToken(token)
-      } catch(error) {
-        console.log('Fetch Error:', error)
-      }
-    };
-    fetchToken()
-  },[])
+  // useEffect(() => {
+  //   const fetchToken = async () => {
+  //     try{
+  //     const token = await getAuth()
+  //     setAccessToken(token)
+  //     } catch(error) {
+  //       console.log('Fetch Error:', error)
+  //     }
+  //   };
+  //   fetchToken()
+  // },[])
 
 
   return (
     <div className="App">
+  <GetUserProfile/>
    <Search/>
 
 

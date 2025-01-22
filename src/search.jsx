@@ -5,6 +5,7 @@ import {getAuth} from './utilities'
 import './search.css'
 import TrackCard from './TrackCard'
 import AlbumCards from './albumsCards'
+import GETsearchParams from './utilities'
 
 
 
@@ -12,7 +13,7 @@ function Search(props){
 // const [artistId, setArtistId] = ([])
 
 //usestates saved data
-const[token, setAccessToken] = useState("")
+
 const[search, setSearch] = useState("")
 const[artistName, setArtistName] = useState("")
 const[artistId, setArtistId] = useState('')
@@ -21,44 +22,19 @@ const[artistPop, setArtistPop] = useState('')
 const[artistGenre, setArtistGenre] = useState('')
 const[topTrack, setTopTrack] = useState('')
 const[album, setAlbum] = useState([])
-
-
-
-
-
-
-//get auth returns token code function in utilities
-  useEffect(() => {
-    const fetchToken = async () => {
-      try{
-      const token = await getAuth()
-      setAccessToken(token)
-      } catch(error) {
-        console.log('Fetch Error:', error)
-        console.log(token)
-      }
-    };
-    fetchToken()
-  },[])
-
-  //get api call head and body universal scope
-  const GETsearchParams = {
-    method: 'GET',
-    headers: {
-        'Authorization' : 'Bearer ' + token,
-        'Content-Type' : 'application/x-www-form-urlencoded'
-    } /* ,
-    body: 
-    'grant_type=client_credentials&client_id='+clientId+"&client_secret="+clientSecret */
-}
-
-//check if data is saved into state rerender
- /* useEffect(() =>{
-    console.log('Data change at artistId; '+artistId)
-  }), [artistId] */
+const[auth, setAuth] = useState('')
+const GETsearchParams = {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer ' + auth,
+    'Content-Type': 'application/x-www-form-urlencoded'
+  }}
 
   //use token code to search for artist
   async function SearchArtist() {
+
+  ;
+  
 
 
   //search for artist ID or save artist info to array/object to be used
@@ -83,9 +59,8 @@ const[album, setAlbum] = useState([])
 
     } catch (error){ console.log('Search Error:', error)}
 
-    
   }
-
+  
 
 
 
