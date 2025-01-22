@@ -75,7 +75,7 @@ const[album, setAlbum] = useState([])
       setArtistImg(data.artists.items[0].images[0].url)
       setArtistPop(data.artists.items[0].followers.total.toLocaleString())
       setArtistGenre(data.artists.items[0].genres[0])
-      //console.log(data.artists.items[0]) Track Data
+      // console.log(data.artists.items[0])
      SearchTopTracks(data.artists.items[0].id)
      SearchTopAlbums(data.artists.items[0].id)
        // console.log(`Artist Data: ID = ${artistId}, Name=${artistName}`)
@@ -119,10 +119,12 @@ const[album, setAlbum] = useState([])
             throw new Error ("Error Searching:Top Albums")
           } const data = await response.json();
           setAlbum(data.items.map((item) => (
+            console.log(item.external_urls),
             {
               name: item.name,
               year: item.release_date,
                img: item.images[0].url,
+               link: item.external_urls.spotify
           }
         )
           )
@@ -169,7 +171,7 @@ const[album, setAlbum] = useState([])
       <ArtistCard name={artistName} img={artistImg} artistPop={artistPop}  artistGenre={artistGenre}/>
       <TrackCard topTrack={topTrack}/>
       {album.length > 0 && ( album.map((album, i) => 
-      <AlbumCards key={i} albumName={album.name} albumYear={album.year} albumImg={album.img}/> 
+      <AlbumCards key={i} link={album.link} albumName={album.name} albumYear={album.year} albumImg={album.img} /> 
       
       ))}
       </>
