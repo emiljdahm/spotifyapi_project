@@ -68,4 +68,47 @@ div.cards p {
 
  }
 
+@media (min-width: 930px) {
+   div.cards {
+      display: inline-block;
+      flex-direction: row;
+      padding: 5px;
+      margin: 6px;
+      max-width: 25%;
+      align-items: center;
+      justify-content: center;
+      width: 100;
+      text-align: center;
+      margin-left: 70px;
+      margin-bottom: 20px;
+      margin-top: 20px;
+   }
+   div.cards.topTrack {
+      display: none;
+
+   }
+
+   div.cards img {
+      margin: 1px;
+      max-width: 80%;
+   }
+
+   img.maincardImg {
+      margin: 1px;
+      max-width: 80%;
+   }
+
+   div.cards h3 {
+      font-size: 1em;
+   }
+
+   div.cards p {
+      font-size: 1em;
+   }
+
+   a {
+      font-size: 1em;
+   }
+}
+
  

@@ -9,7 +9,7 @@ function TrackCard(props){
 
 
     return (
-        <div className="cards">
+        <div className="cards topTrack">
               <h3>Top Track:</h3>
                 <p>{props.topTrack}</p>
             </div>
