@@ -14,6 +14,7 @@ const[artistName, setArtistName] = useState("")
 const[artistId, setArtistId] = useState("")
 const[artistImg, setArtistImg] = useState('')
 const[artistPop, setArtistPop] = useState('')
+const[artistGenre,setArtistGenre] =useState('')
 const[isVisiable, setIsVisiable] = useState(false)
 
 
@@ -60,25 +61,16 @@ const[isVisiable, setIsVisiable] = useState(false)
       setArtistName(data.artists.items[0].name)
       setArtistId(data.artists.items[0].id)
       setArtistImg(data.artists.items[0].images[0].url)
-<<<<<<< HEAD
-      setArtistPop(data.artists.items[0].followers.total)
-      console.log(data.artists.items[0].followers.total)
-      
-      
-=======
       setArtistPop(data.artists.items[0].followers.total.toLocaleString())
       setArtistGenre(data.artists.items[0].genres[0])
       // console.log(data.artists.items[0])
      SearchTopTracks(data.artists.items[0].id)
      SearchTopAlbums(data.artists.items[0].id)
->>>>>>> 6b5de01 (addditional changes to styling)
        // console.log(`Artist Data: ID = ${artistId}, Name=${artistName}`)
       } catch (error){ console.log('Search Error:', error)}
       
   }
 
-<<<<<<< HEAD
-=======
   async function SearchTopAlbums(artistId) {
     //api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums 
         const response = await fetch(`https://api.spotify.com/v1/artists/${artistId}/albums?market=US`, GETsearchParams)
@@ -105,7 +97,6 @@ const[isVisiable, setIsVisiable] = useState(false)
 
 
 
->>>>>>> 6b5de01 (addditional changes to styling)
 
 
 
@@ -134,24 +125,15 @@ const[isVisiable, setIsVisiable] = useState(false)
         </form>
     </div>
     <div>
-<<<<<<< HEAD
-      { artistName !== '' ?
-      <Card name={artistName} topTrack="" img={artistImg} artistPop={artistPop} /> 
-      : ''
-        
-      }
-=======
       {artistName !== '' && ( 
       <>
-      <ArtistCard name={artistName} img={artistImg} artistPop={artistPop}  artistGenre={artistGenre}/>
-      <TrackCard topTrack={topTrack}/>
+      <Card name={artistName} img={artistImg} artistPop={artistPop}  artistGenre={artistGenre}/>
       {album.length > 0 && ( album.map((album, i) => 
       <AlbumCards key={i} link={album.link} albumName={album.name} albumYear={album.year} albumImg={album.img} /> 
       
       ))}
       </>
       )}
->>>>>>> 6b5de01 (addditional changes to styling)
     </div>
     
     </>)
