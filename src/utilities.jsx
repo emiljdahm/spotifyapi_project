@@ -5,7 +5,7 @@ import React from 'react'
 
 export async function getAuth(code){
     
-
+//passive token
     const response = await fetch('https://accounts.spotify.com/api/token', {
         method: 'POST',
         headers: {
