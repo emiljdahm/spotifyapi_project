@@ -75,6 +75,15 @@ main {
     font-size: 60px;
 
 }
+button.loginButton {
+    display: flex;
+    text-align: center;
+}
+
+.loginButton p {
+    display: flex;
+    text-align: center;
+}
 
 
 

@@ -1,43 +1,59 @@
 import React from 'react'
 import { useEffect,useState } from 'react'
 import ArtistCard from './card'
-import {getAuth} from './utilities'
 import './search.css'
 import TrackCard from './TrackCard'
 import AlbumCards from './albumsCards'
-import GETsearchParams from './utilities'
+import Playlist from "./playlist"
 
 
 
-function Search(props){
+
+
 // const [artistId, setArtistId] = ([])
+
+function Search({ accessToken }) {
+
+  useEffect(() => {
+    if (accessToken) {
+      console.log('Access Token:', accessToken);
+      // Use the accessToken to make API calls or perform actions
+    }
+  }, [accessToken]);
+
 
 //usestates saved data
 
-const[search, setSearch] = useState("")
-const[artistName, setArtistName] = useState("")
-const[artistId, setArtistId] = useState('')
-const[artistImg, setArtistImg] = useState('')
-const[artistPop, setArtistPop] = useState('')
-const[artistGenre, setArtistGenre] = useState('')
-const[topTrack, setTopTrack] = useState('')
-const[album, setAlbum] = useState([])
-const[auth, setAuth] = useState('')
-const GETsearchParams = {
-  method: 'POST',
-  headers: {
-    'Authorization': 'Bearer ' + auth,
-    'Content-Type': 'application/x-www-form-urlencoded'
-  }}
+const[search, setSearch] = useState("");
+const[artistName, setArtistName] = useState("");
+const[artistId, setArtistId] = useState('');
+const[artistImg, setArtistImg] = useState('');
+const[artistPop, setArtistPop] = useState('');
+const[artistGenre, setArtistGenre] = useState('');
+const[topTrack, setTopTrack] = useState('');
+const[album, setAlbum] = useState([]);
+const[auth, setAuth] = useState('');
+
+  const GETsearchParams = {
+    method: 'GET',
+    headers: {
+      'Authorization': 'Bearer ' + accessToken,
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }};
+
+async function SearchArtist() {
+
+
+
 
   //use token code to search for artist
-  async function SearchArtist() {
-
-  ;
+ 
   
 
 
   //search for artist ID or save artist info to array/object to be used
+
+
 
     const response = await fetch(`https://api.spotify.com/v1/search?`+`q=${search}&type=artist`, GETsearchParams)
     try{
@@ -51,7 +67,7 @@ const GETsearchParams = {
       setArtistImg(data.artists.items[0].images[0].url)
       setArtistPop(data.artists.items[0].followers.total.toLocaleString())
       setArtistGenre(data.artists.items[0].genres[0])
-      // console.log(data.artists.items[0])
+     // console.log(data.artists.items[0])
      SearchTopTracks(data.artists.items[0].id)
      SearchTopAlbums(data.artists.items[0].id)
        // console.log(`Artist Data: ID = ${artistId}, Name=${artistName}`)
@@ -60,6 +76,7 @@ const GETsearchParams = {
     } catch (error){ console.log('Search Error:', error)}
 
   }
+
   
 
 
@@ -71,6 +88,7 @@ const GETsearchParams = {
       if(!response.ok){
         throw new Error ("Error Searching:Top Tracks")
       } const data = await response.json();
+     // console.log(data.tracks)
       setTopTrack(data.tracks[0].name)
       
       //data.tracks[0].name
@@ -94,7 +112,7 @@ const GETsearchParams = {
             throw new Error ("Error Searching:Top Albums")
           } const data = await response.json();
           setAlbum(data.items.map((item) => (
-            console.log(item.external_urls),
+            //console.log(item.external_urls),
             {
               name: item.name,
               year: item.release_date,
@@ -143,12 +161,14 @@ const GETsearchParams = {
     <div>
       {artistName !== '' && ( 
       <>
+      <Playlist accessToken={accessToken} />
       <ArtistCard name={artistName} img={artistImg} artistPop={artistPop}  artistGenre={artistGenre}/>
       <TrackCard topTrack={topTrack}/>
       {album.length > 0 && ( album.map((album, i) => 
       <AlbumCards key={i} link={album.link} albumName={album.name} albumYear={album.year} albumImg={album.img} /> 
       
       ))}
+  
       </>
       )}
     </div>

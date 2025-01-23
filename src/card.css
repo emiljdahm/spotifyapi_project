@@ -68,7 +68,47 @@ div.cards p {
 
  }
 
-@media (min-width: 930px) {
+ @media (min-width: 1231px) {
+   div.cards {
+      display: inline-flex;
+      flex-direction: row;
+
+
+   }
+   div.cards.topTrack {
+      display: none;
+
+   }
+   div.cards img {
+      margin: 1px;
+      max-width: 90%;
+   }
+
+   img.maincardImg {
+      margin: 1px;
+      max-width: 90%;
+   }
+
+   div.cards h3 {
+      font-size: 1em;
+   }
+
+   div.cards p {
+      font-size: 1em;
+   }
+
+   a {
+      font-size: 1em;
+   }
+
+
+}
+
+
+
+
+
+@media (min-width: 700px) {
    div.cards {
       display: inline-block;
       flex-direction: row;
@@ -79,7 +119,7 @@ div.cards p {
       justify-content: center;
       width: 100;
       text-align: center;
-      margin-left: 70px;
+      margin-left: 85px;
       margin-bottom: 20px;
       margin-top: 20px;
    }

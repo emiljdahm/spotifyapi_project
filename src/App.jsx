@@ -1,132 +1,110 @@
-import React, { useEffect, useState } from 'react'
-import './App.css'
-import './index.css'
-import getAuth from "./utilities"
-import Search from "./search"
-
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import './index.css';
+import Search from './search';
 
 function App(props) {
-//search states
-  const [accessToken, setAccessToken] = useState("")
-  const [authCode, setAuthCode] = useState('')
-  const[access_token, setAccess_Token] = useState('')
+  const [accessToken, setAccessToken] = useState('');
   const [refresh_token, setRefreshToken] = useState('')
 
+  const authUrl = 'https://accounts.spotify.com/authorize';
+  const tokenUrl = 'https://accounts.spotify.com/api/token';
+  const redirectUrl = 'http://localhost:5173/';
+  const scopes = 'playlist-modify-public playlist-modify-private user-library-modify user-library-read';
+  const clientId = '457c90c1dcd144308ec4a560e31d731d';
+  const clientSecret = '87423b39aac249beba4de5e4b3f48670';
 
-// componet mounts and refers to utilities function to get auth WORKS
-// componet mounts and refers to utilities function to get auth
-  // useEffect(() => {
-  //   const fetchToken = async () => {
-  //     try{
-  //     const token = await getAuth()
-  //     setAccessToken(token)
-  //     } catch(error) {
-  //       console.log('Fetch Error:', error)
-  //     }
-  //   };
-  //   fetchToken()
-  // },[])
-
-
-async function getUserProfile(){
-//base data
-const authUrl = "https://accounts.spotify.com/authorize"
-const tokenUrl = "https://accounts.spotify.com/api/token"
-const redirectUrl = "http://localhost:5173/"
-const scopes = "playlist-modify-public playlist-modify-private user-library-modify user-library-read"
-const clientId = "457c90c1dcd144308ec4a560e31d731d"
-const clientSecret = "87423b39aac249beba4de5e4b3f48670"
-//build the call string
-let url = authUrl;
-url+= "?client_id="+ clientId;
-url+="&response_type=code";
-url+="&redirect_uri=" + encodeURI(redirectUrl);
-url+="&show_dialog=true";
-url+="&scope=" +scopes;
-
-//console.log(url) when button clicked the url is called and user prompt to login
-
-  function onPageLoad(){
-    if(window.location.search.length > 0){
+  useEffect(() => {
+    if (window.location.search.length > 0) {
       handleRedirect();
     }
+  }, []);
 
-  }
+  //document.getElementById('LoginButton').style.display = "none";
 
-  function handleRedirect(){
-    let code = getCode();
+  useEffect(() => {
+    if (accessToken !== "") {
+      // Select the element correctly
+      const loginButton = document.getElementsByClassName("loginButton")[0]; // Access the first element of the class list
+      
+      if (loginButton) {
+        // Hide the button
+        loginButton.style.display = "none";
+  
+      }
+    }
+  }, [accessToken])
 
-  }
 
-  function getCode(){
-    let code = null;
+
+  function getCode() {
     const querystring = window.location.search;
-    if(querystring.length > 0){
-      const urlParams = new URLSearchParams(querystring)
+    if (querystring.length > 0) {
+      const urlParams = new URLSearchParams(querystring);
+      return urlParams.get('code');
     }
-    return code
+    return null;
   }
 
-  function fetchAccessToken(code){
-    let body = "grant_type=authorization_code";
-    body+="&code="+code;
-    body+="&redirect_uri="+encodeURI(redirectUrl);
-    body+="client_id="+clientId;
-    body+="client_secret="+clientSecret;
-    callAuthApi(body)
+  function handleRedirect() {
+    const code = getCode();
+    if (code) {
+      fetchAccessToken(code);
+    }
   }
-  function callAuthApi(body){
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", tokenUrl, true);
-    xhr.setRequestHeader("Content-type", "application/x-www-form0urlcoded");
-    xhr.setRequestHeader("Authorization", "Basic "+ btoa(clientId+":"+clientSecret));
+
+  function fetchAccessToken(code) {
+    const body = `grant_type=authorization_code&code=${code}&redirect_uri=${encodeURI(
+      redirectUrl
+    )}&client_id=${clientId}&client_secret=${clientSecret}`;
+    callAuthApi(body);
+  }
+
+  function callAuthApi(body) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', tokenUrl, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('Authorization', 'Basic ' + btoa(`${clientId}:${clientSecret}`));
     xhr.send(body);
-    xhr.onload = handleAuthResponse
+    xhr.onload = handleAuthResponse;
   }
-  function handleAuthResponse(){
-    if(this.status == 200){
-      var data = JSON.parse(this.responseText);
-      console.log(data)
-      var data = JSON.parse(this.responseText);
-      if(data.access_token != undefined){
-        setAccess_Token(data.access_token)
+
+  function handleAuthResponse() {
+    if (this.status === 200) {
+      const data = JSON.parse(this.responseText);
+      if (data.access_token) {
+        setAccessToken(data.access_token);
+        localStorage.setItem('access_token', data.access_token);
       }
-      if(data.refresh_token != undefined){
+      if (data.refresh_token) {
+        localStorage.setItem('refresh_token', data.refresh_token);
         setRefreshToken(data.refresh_token)
+
       }
-      onPageLoad()
-    }
-    else {
-      console.log(this.responseText)
-      alert(this.responseText)
+    } else {
+      console.error(this.responseText);
+      alert(this.responseText);
     }
   }
 
-    
-
-
-
-  const handelLoginButton = (e) => {
-  
-    e.preventDefault()
-    getUserProfile()
-  }
-
-  
-
+  const handleLoginButton = (e) => {
+    e.preventDefault();
+    const url = `${authUrl}?client_id=${clientId}&response_type=code&redirect_uri=${encodeURI(
+      redirectUrl
+    )}&show_dialog=true&scope=${scopes}`;
+    window.location.href = url;
+  };
 
   return (
-    <div onload="onPageLoad()" className="App">
-      <button onClick={handelLoginButton}>Sign In</button>
-   <Search/>
-
-
+    <div className="App">
+      <button className="loginButton" onClick={handleLoginButton}>Sign In</button>
+      <Search accessToken={accessToken} />
     </div>
   );
+}
 
-}
-}
 export default App;
+
 
 
 
