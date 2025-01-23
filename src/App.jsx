@@ -10,7 +10,7 @@ function App(props) {
   const authUrl = 'https://accounts.spotify.com/authorize';
   const tokenUrl = 'https://accounts.spotify.com/api/token';
   const redirectUrl = 'http://localhost:5173/';
-  const scopes = 'playlist-modify-public playlist-modify-private user-library-modify user-library-read';
+  const scopes = 'playlist-modify-public playlist-modify-private user-library-modify user-library-read user-read-private user-read-email';
   const clientId = '457c90c1dcd144308ec4a560e31d731d';
   const clientSecret = '87423b39aac249beba4de5e4b3f48670';
 

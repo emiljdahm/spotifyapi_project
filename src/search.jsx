@@ -17,9 +17,17 @@ function Search({ accessToken }) {
   useEffect(() => {
     if (accessToken) {
       console.log('Access Token:', accessToken);
+      LoadUser()
+      loadUserPlaylist()
       // Use the accessToken to make API calls or perform actions
     }
   }, [accessToken]);
+
+  useEffect(() => {
+      console.log('User Data '+ userId)
+      // Use the accessToken to make API calls or perform actions
+  
+  }, [])
 
 
 //usestates saved data
@@ -32,7 +40,11 @@ const[artistPop, setArtistPop] = useState('');
 const[artistGenre, setArtistGenre] = useState('');
 const[topTrack, setTopTrack] = useState('');
 const[album, setAlbum] = useState([]);
-const[auth, setAuth] = useState('');
+const[userDataName, setUserDataName] = useState('')
+const[userDataEmail, setUserDataEmail] = useState('')
+const[userDataPic, setUserDataPic] = useState('')
+const[userId, setUserId] = useState('')
+
 
   const GETsearchParams = {
     method: 'GET',
@@ -42,18 +54,6 @@ const[auth, setAuth] = useState('');
     }};
 
 async function SearchArtist() {
-
-
-
-
-  //use token code to search for artist
- 
-  
-
-
-  //search for artist ID or save artist info to array/object to be used
-
-
 
     const response = await fetch(`https://api.spotify.com/v1/search?`+`q=${search}&type=artist`, GETsearchParams)
     try{
@@ -73,11 +73,43 @@ async function SearchArtist() {
        // console.log(`Artist Data: ID = ${artistId}, Name=${artistName}`)
        //await SearchTopTracks(artist.id, searchParams);
 
-    } catch (error){ console.log('Search Error:', error)}
+    } catch (error){console.log('Search Error:', error)}
 
   }
 
+  async function LoadUser(){
+    
   
+
+      const response = await fetch(`https://api.spotify.com/v1/me`, GETsearchParams)
+        try{
+          if(!response.ok){
+            throw new Error ("Error Searching: User Search")
+          } const data = await response.json();
+          //console.log(data)
+          setUserId(data.id)
+      
+        
+          } catch (error){ console.log(`User Load Error:`, error)}
+          
+      }
+
+      async function loadUserPlaylist(userId){
+    
+  
+
+        const response = await fetch(`https://api.spotify.com/v1/me/playlists/`, GETsearchParams)
+          try{
+            if(!response.ok){
+              throw new Error ("Error Searching: User Search")
+            } const data = await response.json()
+            //console.log(data)
+            console.log(data)
+          
+            } catch (error){ console.log(`User Load Playlist Error:`, error)}
+            
+        }
+
 
 
 
@@ -158,10 +190,13 @@ async function SearchArtist() {
         <button onChange={handleButton}>Search</button>
         </form>
     </div>
-    <div>
+    <div className="playlistConainer">
+    <Playlist />
+    </div>
+    <div className="searchMainContainer">
+      
       {artistName !== '' && ( 
-      <>
-      <Playlist accessToken={accessToken} />
+        <>
       <ArtistCard name={artistName} img={artistImg} artistPop={artistPop}  artistGenre={artistGenre}/>
       <TrackCard topTrack={topTrack}/>
       {album.length > 0 && ( album.map((album, i) => 
