@@ -21,20 +21,13 @@ function Playlist(props, {accessToken}){
 
 
 
-    return (<div className="listofUserPlaylist">
-        <div className="avaliableSongsContainer">
-            <h1>Playlists</h1>
-            <ul>
-              <li></li>
-            </ul>
-        </div>
-        <div className="inPlaylistContainer">
-            
-        </div>
-      
-        
-    </div>
-    )
+    return (<div className="playlistcard cards">
+      <h2>Playlist</h2>
+      <ul>
+        <li></li>
+      </ul>
+
+    </div>)
 }
   //add search function or move function to headers
         //enter or button to submit playlist to profile?

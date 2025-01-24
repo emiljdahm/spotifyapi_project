@@ -5,6 +5,7 @@ import './search.css'
 import TrackCard from './TrackCard'
 import AlbumCards from './albumsCards'
 import Playlist from "./playlist"
+import Profile from "./Profile"
 
 
 
@@ -16,12 +17,16 @@ function Search({ accessToken }) {
 
   useEffect(() => {
     if (accessToken) {
+      //console.log('Access Token:', topTracks);
       console.log('Access Token:', topTracks);
       LoadUser()
       loadUserPlaylist()
+
       // Use the accessToken to make API calls or perform actions
     }
   }, [accessToken]);
+
+
 
 
 //usestates saved data
@@ -35,6 +40,8 @@ const[artistGenre, setArtistGenre] = useState('');
 const[topTracks, setTopTracks] = useState('');
 const[album, setAlbum] = useState([]);
 const[userId, setUserId] = useState('')
+const[userName, setUserName] = useState('')
+const[userImage, setUserImage] = useState('')
 
 
   const GETsearchParams = {
@@ -77,8 +84,10 @@ async function SearchArtist() {
           if(!response.ok){
             throw new Error ("Error Searching: User Search")
           } const data = await response.json();
-          //console.log(data)
+         //console.log(data.images[0].url)
           setUserId(data.id)
+          setUserName(data.display_name)
+          setUserImage(data.images[0].url)
       
         
           } catch (error){ console.log(`User Load Error:`, error)}
@@ -95,11 +104,27 @@ async function SearchArtist() {
               throw new Error ("Error Searching: User Search")
             } const data = await response.json()
             //console.log(data)
-            console.log(data)
+           
           
             } catch (error){ console.log(`User Load Playlist Error:`, error)}
             
         }
+
+        async function loadUserLibrary(userId){
+    
+  
+
+          const response = await fetch(`https://api.spotify.com/v1/me/playlists/`, GETsearchParams)
+            try{
+              if(!response.ok){
+                throw new Error ("Error Searching: User Search")
+              } const data = await response.json()
+              //console.log(data)
+             
+            
+              } catch (error){ console.log(`User Load Playlist Error:`, error)}
+              
+          }
 
 
 
@@ -113,11 +138,12 @@ async function SearchArtist() {
       } 
       const data = await response.json();
 
-     console.log(data)
+     //console.log(data.tracks.id)
 
      setTopTracks(data.tracks.map((tracks) => (
       {
         name: tracks.name,
+        id: tracks.id
       
        // image:tracks.items
     }
@@ -197,14 +223,18 @@ async function SearchArtist() {
       
         </form>
     </div>
-    
-<div className="userDataContainer"> {accessToken !== '' && (
-    <Playlist />
+    <div className="UserProfile"> {accessToken !== '' && (
+    <Profile userName={userName} userImage={userImage} />
     )}
     
     </div>
+    <div className="UserPlaylist"> {accessToken !== '' && (
+    <Playlist userName={userName} userImage={userImage} />
+    )}
+    
+    </div>
+  
    
-
     <div className="searchMainContainer">
       
       {artistName !== '' && ( 
@@ -212,7 +242,7 @@ async function SearchArtist() {
       <ArtistCard name={artistName} img={artistImg} artistPop={artistPop}  artistGenre={artistGenre}/>
 
       {topTracks.length > 0 && ( topTracks.map((tracks, i) =>
-      <TrackCard key={i} trackName={tracks.name}/> ))}
+      <TrackCard accessToken={accessToken} key={i} trackName={tracks.name} trackId={tracks.id}/> ))}
 
       {album.length > 0 && ( album.map((album, i) => 
       <AlbumCards key={i} link={album.link} albumName={album.name} albumYear={album.year} albumImg={album.img} /> 

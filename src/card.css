@@ -13,10 +13,32 @@ div.cards {
     background-color: 	#212121;
 }
 
+
+
 div.cards img {
+   max-width: 90%;
     border-radius:15px;
-    margin: 2px;
+    margin: 2px;align-self: center;
   
+}
+button.addTrack {
+
+   align-self: center;
+   margin: 2.5px;
+   padding: 4px;
+   width: 50%;
+   height: 60px;
+   font-size: 30px;
+   margin-top: 4.5px;
+   background-color: limegreen;
+   color: white;
+   border-radius: 15px;
+
+}
+
+div.cards p.trackId {
+display: none;
+ 
 }
 
 img.maincardImg  {
