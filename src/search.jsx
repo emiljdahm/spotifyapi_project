@@ -16,18 +16,12 @@ function Search({ accessToken }) {
 
   useEffect(() => {
     if (accessToken) {
-      console.log('Access Token:', accessToken);
+      console.log('Access Token:', topTracks);
       LoadUser()
       loadUserPlaylist()
       // Use the accessToken to make API calls or perform actions
     }
   }, [accessToken]);
-
-  useEffect(() => {
-      console.log('User Data '+ userId)
-      // Use the accessToken to make API calls or perform actions
-  
-  }, [])
 
 
 //usestates saved data
@@ -38,11 +32,8 @@ const[artistId, setArtistId] = useState('');
 const[artistImg, setArtistImg] = useState('');
 const[artistPop, setArtistPop] = useState('');
 const[artistGenre, setArtistGenre] = useState('');
-const[topTrack, setTopTrack] = useState('');
+const[topTracks, setTopTracks] = useState('');
 const[album, setAlbum] = useState([]);
-const[userDataName, setUserDataName] = useState('')
-const[userDataEmail, setUserDataEmail] = useState('')
-const[userDataPic, setUserDataPic] = useState('')
 const[userId, setUserId] = useState('')
 
 
@@ -119,9 +110,22 @@ async function SearchArtist() {
     try{
       if(!response.ok){
         throw new Error ("Error Searching:Top Tracks")
-      } const data = await response.json();
-     // console.log(data.tracks)
-      setTopTrack(data.tracks[0].name)
+      } 
+      const data = await response.json();
+
+     console.log(data)
+
+     setTopTracks(data.tracks.map((tracks) => (
+      {
+        name: tracks.name,
+      
+       // image:tracks.items
+    }
+  )
+    )
+  )
+
+      
       
       //data.tracks[0].name
     
@@ -180,6 +184,8 @@ async function SearchArtist() {
 
 
 
+
+
     return(
     <>
 
@@ -188,17 +194,26 @@ async function SearchArtist() {
         <form onSubmit={handleButton} id="search">
         <input id="search" type="text" placeholder="Enter a Artist" onChange={handleSearch}></input>
         <button onChange={handleButton}>Search</button>
+      
         </form>
     </div>
-    <div className="playlistConainer">
+    
+<div className="userDataContainer"> {accessToken !== '' && (
     <Playlist />
+    )}
+    
     </div>
+   
+
     <div className="searchMainContainer">
       
       {artistName !== '' && ( 
         <>
       <ArtistCard name={artistName} img={artistImg} artistPop={artistPop}  artistGenre={artistGenre}/>
-      <TrackCard topTrack={topTrack}/>
+
+      {topTracks.length > 0 && ( topTracks.map((tracks, i) =>
+      <TrackCard key={i} trackName={tracks.name}/> ))}
+
       {album.length > 0 && ( album.map((album, i) => 
       <AlbumCards key={i} link={album.link} albumName={album.name} albumYear={album.year} albumImg={album.img} /> 
       

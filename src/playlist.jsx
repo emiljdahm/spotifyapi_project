@@ -5,7 +5,7 @@ import {getAuth} from "./utilities"
 
 
 
-function Playlist({accessToken, artistId}){
+function Playlist(props, {accessToken}){
 
   useEffect(() => {
     if (accessToken) {
@@ -29,7 +29,7 @@ function Playlist({accessToken, artistId}){
             </ul>
         </div>
         <div className="inPlaylistContainer">
-            <h1>In Playlist</h1>
+            
         </div>
       
         
