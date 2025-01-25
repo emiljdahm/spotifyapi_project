@@ -51,6 +51,7 @@ function TrackCard({accessToken, trackId,trackName}){
 
 
     return (
+        <div className="container topTrack">
         <div className="cards topTrack ">
             <h3>Top Track</h3>
             <p className="trackName">{trackName}</p>
@@ -58,6 +59,7 @@ function TrackCard({accessToken, trackId,trackName}){
                 <p className="trackId">{trackId}</p>
                
             
+            </div>
             </div>
 )
 

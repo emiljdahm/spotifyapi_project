@@ -24,7 +24,10 @@ const handlePlaylistAdd = () =>{
 }
 
 
-    return (<div className="playlistcard cards">
+
+    return (
+    <div className="container">
+    <div className="playlistcard cards">
       <button>X</button>
       <h2>Add to Playlist?</h2>
       <form>
@@ -36,6 +39,7 @@ const handlePlaylistAdd = () =>{
         <li>Tracks or Albums Que</li>
       </ul>
 
+    </div>
     </div>)
 }
   //add search function or move function to headers

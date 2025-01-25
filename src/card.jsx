@@ -10,15 +10,15 @@ function ArtistCard(props){
 
 
     return (
+        <div className="container">
         <div className="cards">
-        <div>
         <h2>Artist</h2>
               <h3>{props.name}</h3>
               <img className="maincardImg" src={props.img}></img>
               <p>Followers: {props.artistPop}</p>
               <p>Genre: {props.artistGenre}</p>
               <p></p>
-              </div>
+            </div>
             </div>
     )
 

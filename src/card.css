@@ -1,32 +1,56 @@
 
-div.cards {
-    display:flex;
-    flex-direction: column;
-    align-self: center;
-    text-align: center;
-    justify-content: center;
-    padding: 10px;
-    margin: 12px;
+div.cards{
+   display: inline-flex;
+   flex-direction: column;
+    padding: 4px;
+    margin: 4px;
     border-radius:15px;
     box-shadow: 3px 3px 3px black;
     color: white;
     background-color: 	#212121;
+    max-width: 350px;
+    max-height: auto;
+    text-align: center;
+    margin-left: auto;
+   
 }
+div.cards.topTrack{
+   display: inline-flex;
+   flex-direction: column;
+    padding: 4px;
+    margin: 4px;
+    border-radius:15px;
+    box-shadow: 3px 3px 3px black;
+    color: white;
+    background-color: 	#212121;
+    max-width: 350px;
+    max-height: auto;
+    text-align: center;
+    margin-left: auto;
+   
+}
+
 
 div.cards img {
    max-width: 90%;
     border-radius:15px;
-    margin: 2px;align-self: center;
+    margin: 2px;
+    align-self: center;
+    text-align: center;
+    justify-content: center;
   
 }
 
 
+
 button.addTrack, button.addAlbum{
 
-   align-self: center;
-   margin: 2.5px;
+   text-align: center;
+   justify-self: center;
+   margin-left: 48px;
+   margin-bottom: 4px;
    padding: 4px;
-   width: 50%;
+   width: 70%;
    height: 60px;
    font-size: 30px;
    margin-top: 4.5px;
@@ -34,19 +58,17 @@ button.addTrack, button.addAlbum{
    color: white;
    border-radius: 15px;
 
-}
-
-div.cards p.trackId {
-display: none;
- 
-}
-
-img.maincardImg  {
-    border-radius:15px;
-    margin: 2px;
-    max-width: 100%;
 
 }
+
+div.cards h1 {
+   text-align: center;
+   letter-spacing: 2.5px;
+}
+
+
+
+
 div.cards h3 {
    text-align: center;
    font-weight: 400;
@@ -90,88 +112,9 @@ div.cards p {
 
  }
 
- @media (min-width: 1231px) {
-   div.cards {
-      display: inline-flex;
-      flex-direction: row;
-
-
-   }
-   div.cards.topTrack {
-      display: none;
-
-   }
-   div.cards img {
-      margin: 1px;
-      max-width: 90%;
-   }
-
-   img.maincardImg {
-      margin: 1px;
-      max-width: 90%;
-   }
-
-   div.cards h3 {
-      font-size: 1em;
-   }
-
-   div.cards p {
-      font-size: 1em;
-   }
-
-   a {
-      font-size: 1em;
-   }
-
-
-}
 
 
 
-
-
-@media (min-width: 700px) {
-   div.cards {
-      display: inline-block;
-      flex-direction: row;
-      padding: 5px;
-      margin: 6px;
-      max-width: 25%;
-      align-items: center;
-      justify-content: center;
-      width: 100;
-      text-align: center;
-      margin-left: 85px;
-      margin-bottom: 20px;
-      margin-top: 20px;
-   }
-   div.cards.topTrack {
-      display: none;
-
-   }
-
-   div.cards img {
-      margin: 1px;
-      max-width: 80%;
-   }
-
-   img.maincardImg {
-      margin: 1px;
-      max-width: 80%;
-   }
-
-   div.cards h3 {
-      font-size: 1em;
-   }
-
-   div.cards p {
-      font-size: 1em;
-   }
-
-   a {
-      font-size: 1em;
-   }
-}
 
 .cards {
    transition: box-shadow 0.3s ease-in-out, transform 0.2s ease-in-out;

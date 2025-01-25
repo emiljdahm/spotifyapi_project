@@ -53,3 +53,16 @@
     background-color: white;
 
  }
+ div.container.albums{
+   display: inline;
+   flex-wrap: wrap;
+   flex-direction: column;
+   min-width: 90%;
+ }
+ div.container.topTrack {
+   display: inline;
+   flex-direction: column;
+   align-content: center;
+   text-align: center;
+   min-width: 90%;
+ }

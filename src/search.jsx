@@ -252,11 +252,12 @@ async function SearchArtist() {
 
       {topTracks.length > 0 && ( topTracks.map((tracks, i) =>
       <TrackCard accessToken={accessToken} key={i} trackName={tracks.name} trackId={tracks.id}/> ))}
-
+<div className="container albums">
       {album.length > 0 && ( album.map((album, i) => 
       <AlbumCards accessToken={accessToken} key={i} link={album.link} albumId={album.id} albumName={album.name} albumYear={album.year} albumImg={album.img} /> 
       
       ))}
+      </div>
   
       </>
       )}
