@@ -5,7 +5,8 @@ import {getAuth} from "./utilities"
 
 
 
-function Playlist(props, {accessToken}){
+
+function Playlist({accessToken,trackName,trackId}){
 
   useEffect(() => {
     if (accessToken) {
@@ -18,13 +19,21 @@ function Playlist(props, {accessToken}){
 
 
 
+const handlePlaylistAdd = () =>{
 
+}
 
 
     return (<div className="playlistcard cards">
-      <h2>Playlist</h2>
+      <button>X</button>
+      <h2>Add to Playlist?</h2>
+      <form>
+        <label htmlFor="playlistName">Name</label>
+        <input type="text" id="playlistName"></input><br/>
+        <button className="playlistSave">+</button>
+      </form>
       <ul>
-        <li></li>
+        <li>Tracks or Albums Que</li>
       </ul>
 
     </div>)

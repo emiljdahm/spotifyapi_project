@@ -173,13 +173,15 @@ async function SearchArtist() {
           if(!response.ok){
             throw new Error ("Error Searching:Top Albums")
           } const data = await response.json();
+          console.log(data)
           setAlbum(data.items.map((item) => (
-            //console.log(item.external_urls),
+            
             {
               name: item.name,
               year: item.release_date,
                img: item.images[0].url,
-               link: item.external_urls.spotify
+               link: item.external_urls.spotify,
+               id:item.id
           }
         )
           )
@@ -220,6 +222,13 @@ async function SearchArtist() {
         <form onSubmit={handleButton} id="search">
         <input id="search" type="text" placeholder="Enter a Artist" onChange={handleSearch}></input>
         <button onChange={handleButton}>Search</button>
+        <div className="LoginNotice">
+           {accessToken === '' && (
+          <p>Develomental App Please Login, reframe from refreshing the page.</p>
+    
+    )}
+    
+    </div>
       
         </form>
     </div>
@@ -229,7 +238,7 @@ async function SearchArtist() {
     
     </div>
     <div className="UserPlaylist"> {accessToken !== '' && (
-    <Playlist userName={userName} userImage={userImage} />
+    <Playlist userName={userName} userImage={userImage}  />
     )}
     
     </div>
@@ -245,7 +254,7 @@ async function SearchArtist() {
       <TrackCard accessToken={accessToken} key={i} trackName={tracks.name} trackId={tracks.id}/> ))}
 
       {album.length > 0 && ( album.map((album, i) => 
-      <AlbumCards key={i} link={album.link} albumName={album.name} albumYear={album.year} albumImg={album.img} /> 
+      <AlbumCards accessToken={accessToken} key={i} link={album.link} albumId={album.id} albumName={album.name} albumYear={album.year} albumImg={album.img} /> 
       
       ))}
   

@@ -1,7 +1,7 @@
 import React from 'react'
 
-  const clientId = "457c90c1dcd144308ec4a560e31d731d"
-  const clientSecret = "87423b39aac249beba4de5e4b3f48670"
+  const clientId = ""
+  const clientSecret = ""
 
 export async function getAuth(code){
     

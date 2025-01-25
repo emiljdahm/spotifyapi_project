@@ -19,6 +19,12 @@
     justify-self: center;
     min-width: 253px;
  }
+ .searchContainer p {
+   color: white;
+   align-self: center;
+   justify-self: center;
+   
+}
  .searchContainer img {
    margin-top: 33px;
    max-width: 120px;
@@ -30,6 +36,7 @@
  .searchContainer form {
     align-self: center;
     justify-self: center;
+    text-align: center;
     
  }
  .searchContainer form input {
@@ -39,7 +46,7 @@
     box-shadow: 2px 2px 2px gray;
     background-color: white;
  }
- .searchContainer form button {
+ .searchContainer form button , button.loginButton {
     padding: 6px;
     border-radius: 5px;
     box-shadow: 2px 2px 2px gray;

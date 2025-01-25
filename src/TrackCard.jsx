@@ -43,7 +43,7 @@ function TrackCard({accessToken, trackId,trackName}){
                 e.preventDefault();
                 setTrackAddId(trackId); // Update the state with the current trackId
                 console.log('Add button pressed for track ID:', trackId);
-                alert("Track Added to Library")
+                alert(`${trackName} added to library!`)
                 // Call the function to add the track to the user's library
                 AddTrackToUserLibrary();
               };
