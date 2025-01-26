@@ -11,9 +11,9 @@ function Profile(props){
     return (
         <div className="container">
         <div className="ProfileCard cards">
+        <img src={props.userImage}></img>
             <h2>Welcome!</h2>
-            <img src={props.userImage}></img>
-            <h4>{props.userName}!</h4>
+            <h3>{props.userName}</h3>
             </div>
             </div>
 )

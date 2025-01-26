@@ -1,35 +1,15 @@
 
 div.cards{
-   display: inline-flex;
-   flex-direction: column;
-    padding: 4px;
-    margin: 4px;
-    border-radius:15px;
-    box-shadow: 3px 3px 3px black;
-    color: white;
-    background-color: 	#212121;
-    max-width: 350px;
-    max-height: auto;
-    text-align: center;
-    margin-left: auto;
-   
-}
-div.cards.topTrack{
-   display: inline-flex;
-   flex-direction: column;
-    padding: 4px;
-    margin: 4px;
-    border-radius:15px;
-    box-shadow: 3px 3px 3px black;
-    color: white;
-    background-color: 	#212121;
-    max-width: 350px;
-    max-height: auto;
-    text-align: center;
-    margin-left: auto;
-   
-}
+   display: grid;
+   align-items: center;
+   grid-template-columns: repeat(4, minmax(200px, 1fr));
+   margin: 3px;
+   padding: 6px;
+   gap: 9px;
+   background-color: #535353;
+   color: white;
 
+}
 
 div.cards img {
    max-width: 90%;
@@ -44,19 +24,24 @@ div.cards img {
 
 
 button.addTrack, button.addAlbum{
-
-   text-align: center;
-   justify-self: center;
-   margin-left: 48px;
-   margin-bottom: 4px;
-   padding: 4px;
-   width: 70%;
-   height: 60px;
+   height: 70%;
+   width: 120px;
    font-size: 30px;
-   margin-top: 4.5px;
    background-color: limegreen;
    color: white;
    border-radius: 15px;
+
+
+
+}
+button.removeTrack{
+   height: 70%;
+   width: 120px;
+   font-size: 30px;
+   background-color: white;
+   color: black;
+   border-radius: 15px;
+
 
 
 }
@@ -64,6 +49,7 @@ button.addTrack, button.addAlbum{
 div.cards h1 {
    text-align: center;
    letter-spacing: 2.5px;
+   font-size: 12px;
 }
 
 
@@ -111,6 +97,14 @@ div.cards p {
     text-decoration: none;
 
  }
+
+ div.ProfileContainer h2 {
+   justify-self: end;
+   
+}
+div.ProfileContainer h3 {
+   justify-self: start;
+}
 
 
 

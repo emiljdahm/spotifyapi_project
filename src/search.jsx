@@ -231,16 +231,19 @@ async function SearchArtist() {
     </div>
       
         </form>
+
     </div>
-    <div className="UserProfile"> {accessToken !== '' && (
+    <div className="ProfileContainer" >
+    {accessToken !== '' && (
     <Profile userName={userName} userImage={userImage} />
     )}
     
-    </div>
-    <div className="UserPlaylist"> {accessToken !== '' && (
-    <Playlist userName={userName} userImage={userImage}  />
+  
+  {accessToken !== '' && (
+    <Playlist userName={userName} userImage={userImage} userId={userId} />
     )}
     
+  
     </div>
   
    
@@ -249,12 +252,14 @@ async function SearchArtist() {
       {artistName !== '' && ( 
         <>
       <ArtistCard name={artistName} img={artistImg} artistPop={artistPop}  artistGenre={artistGenre}/>
-
+        <div className='container topTracks'>
       {topTracks.length > 0 && ( topTracks.map((tracks, i) =>
       <TrackCard accessToken={accessToken} key={i} trackName={tracks.name} trackId={tracks.id}/> ))}
+      </div>
 <div className="container albums">
       {album.length > 0 && ( album.map((album, i) => 
-      <AlbumCards accessToken={accessToken} key={i} link={album.link} albumId={album.id} albumName={album.name} albumYear={album.year} albumImg={album.img} /> 
+      <div className="container albumsCard">
+      <AlbumCards accessToken={accessToken} key={i} link={album.link} albumId={album.id} albumName={album.name} albumYear={album.year} albumImg={album.img} /> </div>
       
       ))}
       </div>

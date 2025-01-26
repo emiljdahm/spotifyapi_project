@@ -51,15 +51,17 @@ function TrackCard({accessToken, trackId,trackName}){
 
 
     return (
-        <div className="container topTrack">
+      
+      
         <div className="cards topTrack ">
-            <h3>Top Track</h3>
+            <h1>Top Track</h1>
             <p className="trackName">{trackName}</p>
              <button onClick={handleAddButton} className="addTrack">+</button>
-                <p className="trackId">{trackId}</p>
+             <button className="removeTrack">-</button>
+          
                
             
-            </div>
+            
             </div>
 )
 

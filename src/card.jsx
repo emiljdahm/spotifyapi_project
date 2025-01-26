@@ -10,16 +10,13 @@ function ArtistCard(props){
 
 
     return (
-        <div className="container">
-        <div className="cards">
-        <h2>Artist</h2>
-              <h3>{props.name}</h3>
-              <img className="maincardImg" src={props.img}></img>
-              <p>Followers: {props.artistPop}</p>
-              <p>Genre: {props.artistGenre}</p>
-              <p></p>
+
+        <div className="cards artistCard">
+             <img className="maincardImg" src={props.img}></img>
+        <h1>Artist</h1>
+        <h2>{props.name}</h2>
             </div>
-            </div>
+   
     )
 
             

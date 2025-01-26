@@ -49,13 +49,13 @@ function AlbumCards({albumImg,albumName,albumYear,link,albumId,accessToken}){
 
 
     return (
-      <div className="container albums">
+      
         <div className="cards">
-              <a href={link} target="_blank" rel="noopener noreferrer"><h3>{albumName}</h3></a>
+              <a href={link} target="_blank" rel="noopener noreferrer"><h1>Album:<br></br>{albumName}</h1></a>
           <img className="albumCover" src={albumImg} alt={albumName} />
-                <p>{albumYear}</p>
+                <h1>Release Date: <br></br>{albumYear}</h1>
                 <button onClick={handleAddButton}className="addAlbum">+</button>
-            </div>
+            
             </div>
 )
 
