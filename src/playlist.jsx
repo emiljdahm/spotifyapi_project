@@ -8,6 +8,7 @@ import React, {useState, useEffect} from "react";
 function Playlist({accessToken,userId}){
 
   const[playlistData, setPlaylistData] = useState([])
+  const[isVisable, setIsVisiable] = useState(false)
 
   
 
@@ -66,29 +67,39 @@ async function loadSpecificPlaylist(userId){
 const handlePlaylistView = (e) => {
   e.preventDefault()
   console.log("test")
+  setIsVisiable(!isVisable)
 
 }
 
-const handleReturn = () => {
-
+const handleReturn = (e) => {
+  e.preventDefault()
+  console.log(e.target.className)
+  setIsVisiable(true)
 }
 
 
 return (
   <div>
-  <div className="container">
-     <h2 className="playlist title" >User Playlists</h2>
-    <div className="playlistcard cards">
-      <div className="playlistContainer">
-        {playlistData.map((playlistItem) => (
-          <button onClick={handlePlaylistView} className={`cards ` + playlistItem.id}><div key={playlistItem.id} className="playlistItem">
-            <img src={playlistItem.image} alt={playlistItem.name} />
-            <h3>{playlistItem.name}</h3>
-            <p>{playlistItem.numOfTracks} Tracks</p>
-          </div></button>
-        ))}
-      </div>
-    </div>
+    {isVisable === true ? <div className="container">
+    <h2 className="playlist title" >User Playlists</h2>
+   <div className="playlistcard cards">
+     <div className="playlistContainer">
+       {playlistData.map((playlistItem) => (
+         <button onClick={handlePlaylistView} className={`cards playlistSelect ` + playlistItem.id}><div key={playlistItem.id} className="playlistItem">
+           <img src={playlistItem.image} alt={playlistItem.name} />
+           <h3>{playlistItem.name}</h3>
+           <p>{playlistItem.numOfTracks} Tracks</p>
+         </div></button>
+       ))}
+     </div>
+   </div>
+ </div>:""}
+  
+  <div>
+  {isVisable === false ? <div> 
+    <button onClick={handleReturn}>Return </button>
+    <div className="playlistTitle">{}</div>
+  </div>:""}
   </div>
   </div>
 )

@@ -221,6 +221,7 @@ async function SearchArtist() {
      
         <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Full_Logo_RGB_White-300x82.png"></img>
         <form onSubmit={handleButton} id="search">
+        <h1>Jammer</h1>
         <input id="search" type="text" placeholder="Enter a Artist" onChange={handleSearch}></input>
         <button onChange={handleButton}>Search</button>
         <div className="LoginNotice">

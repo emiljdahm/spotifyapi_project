@@ -136,8 +136,11 @@ div.ProfileContainer h3 {
    box-shadow: 0 4px 10px rgba(0, 255, 0, 0.5);
    transform: scale(1.1);
  }
+ button.playlistSelect{
 
- h2.playlist.title{
+ }
+
+ h2.playlist.title {
    display: flex;
    background-color: limegreen;
    margin-top: 4px;

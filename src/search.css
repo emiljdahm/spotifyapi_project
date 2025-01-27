@@ -14,10 +14,10 @@
  }
 
  .searchContainer h1 {
-    color: white;
-    align-self: center;
-    justify-self: center;
-    min-width: 253px;
+  text-align: center;
+  letter-spacing: 2.5px;
+  font-size: 16x;
+  color: white;
  }
  .searchContainer p {
    color: white;
