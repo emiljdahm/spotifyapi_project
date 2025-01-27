@@ -45,28 +45,51 @@ async function loadUserPlaylist(userId){
     }
   )
 )
+ setPlaylistData(fetchedData)
+ }catch(error) {console.log('Playlist User Load Error', error)}
+}
+
+async function loadSpecificPlaylist(userId){
+
+  const response = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, GETsearchParams)
+  try{
+  if(!response.ok){
+   throw new Error('Error Getting User Playlists.')
+  } const data = await response.json();
+ // console.log(data)
+
  
-  setPlaylistData(fetchedData);
-} catch(error) {console.log('Playlist Load Error', error)}
+  
+} catch(error) {console.log('Playlist Specific Load Error', error)}
+}
+
+const handlePlaylistView = (e) => {
+  e.preventDefault()
+  console.log("test")
+
+}
+
+const handleReturn = () => {
+
 }
 
 
-
 return (
+  <div>
   <div className="container">
-     <h2 >User Playlists</h2>
+     <h2 className="playlist title" >User Playlists</h2>
     <div className="playlistcard cards">
-    
       <div className="playlistContainer">
         {playlistData.map((playlistItem) => (
-          <div key={playlistItem.id} className="playlistItem">
+          <button onClick={handlePlaylistView} className={`cards ` + playlistItem.id}><div key={playlistItem.id} className="playlistItem">
             <img src={playlistItem.image} alt={playlistItem.name} />
             <h3>{playlistItem.name}</h3>
             <p>{playlistItem.numOfTracks} Tracks</p>
-          </div>
+          </div></button>
         ))}
       </div>
     </div>
+  </div>
   </div>
 )
 }

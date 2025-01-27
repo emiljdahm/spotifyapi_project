@@ -75,9 +75,11 @@
  div.playlistItem {
     display: grid;
     justify-content: space-evenly;
-    grid-template-columns: repeat(4, minmax(200px, 1fr));,
-    gap: 10px
-    justify-content: center
+    align-items: center;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    gap: 10px;
+   
+    
   }
  div.cards.artistCard {
    background-color: #121212;

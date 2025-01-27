@@ -136,3 +136,20 @@ div.ProfileContainer h3 {
    box-shadow: 0 4px 10px rgba(0, 255, 0, 0.5);
    transform: scale(1.1);
  }
+
+ h2.playlist.title{
+   display: flex;
+   background-color: limegreen;
+   margin-top: 4px;
+   min-height: 90px;
+   min-width: 97%;
+   padding: 12px;
+   border-radius: 15px;
+   box-shadow: 5px 5px 5px black;
+   margin: 4px;
+   margin-top: 6px;
+   margin-bottom: 6px;
+   justify-content: center;
+   align-self: center;
+   color: white;
+ }
