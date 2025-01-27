@@ -173,7 +173,7 @@ async function SearchArtist() {
           if(!response.ok){
             throw new Error ("Error Searching:Top Albums")
           } const data = await response.json();
-          console.log(data)
+          //console.log(data)
           setAlbum(data.items.map((item) => (
             
             {
@@ -218,6 +218,7 @@ async function SearchArtist() {
     <>
 
     <div className="searchContainer">
+     
         <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Full_Logo_RGB_White-300x82.png"></img>
         <form onSubmit={handleButton} id="search">
         <input id="search" type="text" placeholder="Enter a Artist" onChange={handleSearch}></input>
@@ -240,7 +241,7 @@ async function SearchArtist() {
     
   
   {accessToken !== '' && (
-    <Playlist userName={userName} userImage={userImage} userId={userId} />
+    <Playlist userId={userId} accessToken={accessToken} />
     )}
     
   
@@ -259,7 +260,8 @@ async function SearchArtist() {
 <div className="container albums">
       {album.length > 0 && ( album.map((album, i) => 
       <div className="container albumsCard">
-      <AlbumCards accessToken={accessToken} key={i} link={album.link} albumId={album.id} albumName={album.name} albumYear={album.year} albumImg={album.img} /> </div>
+      <AlbumCards accessToken={accessToken} key={i} link={album.link} albumId={album.id} albumName={album.name} albumYear={album.year} albumImg={album.img} />
+      </div>
       
       ))}
       </div>

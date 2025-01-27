@@ -69,10 +69,16 @@
 
  div.ProfileContainer {
    display: grid;
-   grid-template-columns: repeat(auto, minmac(200px, 1fr));
-
-
+   grid-template-columns: repeat(auto, minmax(200px, 1fr));
  }
+ 
+ div.playlistItem {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));,
+    gap: 10px
+    justify-content: center
+  }
  div.cards.artistCard {
    background-color: #121212;
  }
