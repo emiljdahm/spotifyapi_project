@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 
 
 
-function TrackCard({accessToken, trackId,trackName}){
+function TrackCard({accessToken, trackId,trackName, playlistId}){
     const [trackAddId, setTrackAddId] = useState('')
 
 

@@ -242,7 +242,7 @@ async function SearchArtist() {
     
   
   {accessToken !== '' && (
-    <Playlist userId={userId} accessToken={accessToken} />
+    <Playlist userId={userId} accessToken={accessToken}/>
     )}
     
   
