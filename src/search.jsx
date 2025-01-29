@@ -13,18 +13,18 @@ import Profile from "./Profile"
 
 // const [artistId, setArtistId] = ([])
 
-function Search({ accessToken }) {
+function Search({ accessToken, playlistId}) {
 
   useEffect(() => {
     if (accessToken) {
       //console.log('Access Token:', topTracks);
-      console.log('Access Token:', topTracks);
+      console.log('Access Token:', playlistId);
       LoadUser()
       loadUserPlaylist()
 
       // Use the accessToken to make API calls or perform actions
     }
-  }, [accessToken]);
+  }, [accessToken,playlistId]);
 
 
 
@@ -242,7 +242,7 @@ async function SearchArtist() {
     
   
   {accessToken !== '' && (
-    <Playlist userId={userId} accessToken={accessToken}/>
+    <Playlist userId={userId} accessToken={accessToken} playlistId={playlistId}/>
     )}
     
   
@@ -256,7 +256,7 @@ async function SearchArtist() {
       <ArtistCard name={artistName} img={artistImg} artistPop={artistPop}  artistGenre={artistGenre}/>
         <div className='container topTracks'>
       {topTracks.length > 0 && ( topTracks.map((tracks, i) =>
-      <TrackCard accessToken={accessToken} key={i} trackName={tracks.name} trackId={tracks.id}/> ))}
+      <TrackCard accessToken={accessToken} key={i} trackName={tracks.name} trackId={tracks.id} playlistId={playlistId}/> ))}
       </div>
 <div className="container albums">
       {album.length > 0 && ( album.map((album, i) => 

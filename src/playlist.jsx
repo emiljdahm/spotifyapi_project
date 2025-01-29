@@ -62,6 +62,8 @@ function Playlist({ accessToken, userId }) {
     }
   }
 
+  
+
   const handlePlaylistView = (e, playlistId) => {
     e.preventDefault();
     setIsVisable(false);

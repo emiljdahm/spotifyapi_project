@@ -78,9 +78,9 @@
     align-items: center;
     grid-template-columns: repeat(4, minmax(200px, 1fr));
     gap: 10px;
-   
-    
+    max-width: 90%;
   }
+  
  div.cards.artistCard {
    background-color: #121212;
  }

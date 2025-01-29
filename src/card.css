@@ -47,7 +47,7 @@ button.removeTrack{
 
 }
 
-button.removeSong, button.returnButton {
+button.removeSong{
    display: flex;
    flex-direction: column;
    font-size: 1rem;
@@ -57,6 +57,21 @@ button.removeSong, button.returnButton {
    list-style: none;
    padding: 1rem;
    width: 220px;
+   height: 2rem;
+   align-items: center;
+   justify-content: center;
+
+}
+button.returnButton {
+   display: inline-flex;
+   flex-direction: column;
+   font-size: 1rem;
+   background-color: white;
+   color: black;
+   border-radius: 15px;
+   list-style: none;
+   padding: 1rem;
+   width: 60px;
    height: 2rem;
    align-items: center;
    justify-content: center;
@@ -177,3 +192,4 @@ div.ProfileContainer h3 {
    margin-right: 190px;
    
  }
+
